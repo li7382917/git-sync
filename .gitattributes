@@ -1,0 +1,4 @@
+# Override GitHub Linguist language detection
+templates/* linguist-vendored
+*.html linguist-documentation
+uv.lock linguist-generated
