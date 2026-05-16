@@ -2,7 +2,7 @@ import logging
 
 from flask import Flask, request, jsonify, render_template
 
-from git_sync.config import GITHUB_TOKEN, GITHUB_USER
+from git_sync.config import GITHUB_TOKEN, GITHUB_USER, HOST, PORT
 from git_sync.github import repo_exists, repo_url
 from git_sync.syncer import sync
 
@@ -60,5 +60,5 @@ if __name__ == "__main__":
         log.error("GITHUB_TOKEN not set. Export it or add to ~/.hermes/.env")
         raise SystemExit(1)
 
-    log.info("Starting git-sync on :5050  (user: %s)", GITHUB_USER)
-    app.run(host="0.0.0.0", port=5050, debug=False)
+    log.info("Starting git-sync on :%s  (user: %s)", PORT, GITHUB_USER)
+    app.run(host=HOST, port=PORT, debug=False)
